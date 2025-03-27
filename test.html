@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar with Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .search-container {
+            position: relative;
+            width: 300px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .results {
+            position: absolute;
+            top: 40px;
+            width: 100%;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .result-item {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+        .result-item:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search for hotels or rides...">
+        <div class="results" id="results"></div>
+    </div>
+    
+    <script>
+        const searchInput = document.getElementById('search');
+        const resultsContainer = document.getElementById('results');
+
+        const data = [
+            "OYO Rooms - Delhi",
+            "OYO Rooms - Mumbai",
+            "Uber Ride - New York",
+            "Uber Ride - San Francisco",
+            "OYO Rooms - Bangalore",
+            "Uber Ride - Los Angeles",
+            "OYO Rooms - Hyderabad",
+            "Uber Ride - Chicago"
+        ];
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            resultsContainer.innerHTML = '';
+            if (query) {
+                const filteredResults = data.filter(item => item.toLowerCase().includes(query));
+                resultsContainer.style.display = filteredResults.length ? 'block' : 'none';
+                filteredResults.forEach(result => {
+                    const div = document.createElement('div');
+                    div.classList.add('result-item');
+                    div.textContent = result;
+                    div.addEventListener('click', () => {
+                        searchInput.value = result;
+                        resultsContainer.style.display = 'none';
+                    });
+                    resultsContainer.appendChild(div);
+                });
+            } else {
+                resultsContainer.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Profile Clone</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-pic">
+                    <a href="#">
+                        <input type="image" id="image" alt="Login" src="/media/examples/login-button.png" />
+                        </label>
+                    </a>
+            </div>
+            <div class="profile-info">
+                <label for="name"></label>
+                <input type="text" id="name" name="name"  />
+                <p><label for="bio"></label>
+                <input type="text" id="bio" name="name" /></p>
+                <div class="stats">
+                    <span><strong>150</strong> posts</span>
+                    <span><strong>10k</strong> followers</span>
+                    <span><strong>500</strong> following</span>
+                </div>
+            </div>
+        </div>
+        <div class="highlights">
+            <div class="highlight-item">🏋️‍♂️ Workouts</div>
+            <div class="highlight-item">🥗 Diet</div>
+            <div class="highlight-item">🔥 Motivation</div>
+        </div>
+        <div class="posts">
+            <a href="#">
+                <input type="image" id="image" alt="photo1" src="/media/examples/login-button.png" />
+                </label>
+            </a>
+            <a href="#">
+                <input type="image" id="image" alt="photo2" src="/media/examples/login-button.png" />
+                </label>
+            </a>
+            <a href="#">
+                <input type="image" id="image" alt="photo3" src="/media/examples/login-button.png" />
+                </label>
+            </a>
+        </div>
+    </div>
+
+    <div class="membership-container">
+        <h2>Gym Membership Plans</h2>
+        <div class="plans">
+            <div class="plan">
+                <h3>Basic Plan</h3>
+                <p>$20/month</p>
+                <button>Join Now</button>
+            </div>
+            <div class="plan">
+                <h3>Standard Plan</h3>
+                <p>$40/month</p>
+                <button>Join Now</button>
+            </div>
+            <div class="plan">
+                <h3>Premium Plan</h3>
+                <p>$60/month</p>
+                <button>Join Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="test.js"></script>
+</body>
+</html>
